@@ -56,4 +56,14 @@ UIPanel定义了脚本生命周期函数LateUpdate()，行为如下：
 
 ## NGUI Tween (NGUI过程动画)
 UITweener继承自MonoBehaviour，是一个使用模板方法模式实现的抽象类，定义了根据配置（时长、动画曲线、延迟时间）进行数值采样的算法流程，具体的根据数值进行属性更新的操作由子类实现，如TweenColor的实现为Color.Lerp(from, to, factor);
-    
+
+## Unity静态合批
+### 构建时合批
+- 在Player项目设置启用静态合批
+- 在对象的Static Flag 启用 Batching Static
+### 运行时合批
+- 调用StaticBatchingUtility.Combine传入游戏对象，为静态合批做好准备，适合程序生成的对象
+
+## Unity动态合批
+- 在Player项目设置启用动态合批\
+对满足条件的网格，Unity会自动进行动态批处理，动态合批会在CPU上进行顶点转换，开销可能大于DrawCall，可能会对性能产生影响
